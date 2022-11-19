@@ -31,13 +31,23 @@ lib/nncase/v0/runtime/k210/interpreter.cpp
 lib/nncase/v0/runtime/k210/k210_ops.cpp
 lib/nncase/v0/runtime/cpu/cpu_ops.cpp
 lib/nncase/nncase.cpp
+
+lib/nncase/v0/nncase_v0.cpp
+lib/nncase/v1/nncase_v1.cpp
 ''')
 CPPPATH = [cwd + '/lib/drivers/include',
 cwd + '/lib/nncase/v0/include',
 cwd + '/lib/nncase/include',
 cwd + '/third_party/xtl/include',
 cwd + '/lib/bsp/include',
-cwd + '/lib/utils/include']
+cwd + '/lib/utils/include',
+
+cwd + '/lib/nncase/v0',
+cwd + '/lib/nncase/v1',
+cwd + '/lib/nncase/v1/include',
+cwd + '/third_party/gsl-lite/include',
+cwd + '/third_party/mpark-variant/include'
+]
 CPPDEFINES = ['NNCASE_TARGET=k210',
 'TCB_SPAN_NO_EXCEPTIONS',
 'TCB_SPAN_NO_CONTRACT_CHECKING',
@@ -52,6 +62,16 @@ CPPDEFINES = ['NNCASE_TARGET=k210',
 'LOG_KERNEL', 
 '__riscv64']
 
-group = DefineGroup('K210-SDK', src, depend = ['PKG_USING_K210_SDK'], CPPPATH = CPPPATH, LOCAL_CPPDEFINES = CPPDEFINES)
+LIBPATH = [
+cwd + '/lib/nncase/v1/lib'
+]
+
+LIBS = [
+'nncase.runtime',
+'nncase.rt_modules.k210'
+]
+#这个顺序有先后……
+
+group = DefineGroup('K210-SDK', src, depend = ['PKG_USING_K210_SDK'], CPPPATH = CPPPATH, LOCAL_CPPDEFINES = CPPDEFINES , LIBS=LIBS, LIBPATH = LIBPATH)
 
 Return('group')
