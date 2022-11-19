@@ -3,6 +3,8 @@
 # Created by https://www.gitignore.io/api/visualstudiocode,windows,c,c++,cmake,codeblocks,intellij+all,jetbrains+all,kdevelop4,linux,macos,osx,pycharm+all,vim,visualstudio,xcode
 # Edit at https://www.gitignore.io/?templates=visualstudiocode,windows,c,c++,cmake,codeblocks,intellij+all,jetbrains+all,kdevelop4,linux,macos,osx,pycharm+all,vim,visualstudio,xcode
 
+lib/nncase/v1/lib/libnncase.runtime.a
+
 ### C ###
 # Prerequisites
 *.d
