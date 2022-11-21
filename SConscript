@@ -34,6 +34,8 @@ lib/nncase/nncase.cpp
 
 lib/nncase/v0/nncase_v0.cpp
 lib/nncase/v1/nncase_v1.cpp
+
+lib/bsp/sleep.c
 ''')
 CPPPATH = [cwd + '/lib/drivers/include',
 cwd + '/lib/nncase/v0/include',
